@@ -40,113 +40,59 @@ class HomePage extends StatelessWidget {
                   child: Text('Event: Event name here\n',
                       style: TextStyle(fontSize: 14)),
                 ),
-                Row(
+                Wrap(
+                  spacing: 12.0,
+                  runSpacing: 12.0,
                   children: [
-                    Expanded(
-                      child: FormContainer(
-                        labelText: 'First Name',
-                        controller: nameController,
-                      ),
+                    FormContainer(
+                      labelText: 'First Name',
+                      controller: nameController,
                     ),
-                    const SizedBox(
-                        width: 12.0), // Add spacing between containers
-                    Expanded(
-                      child: FormContainer(
-                        labelText: 'Last Name',
-                        controller: lastNameController,
-                      ),
+                    FormContainer(
+                      labelText: 'Last Name',
+                      controller: lastNameController,
                     ),
-                  ],
-                ),
-                Row(
-                  children: [
-                    Expanded(
-                      child: FormContainer(
-                        labelText: 'E-mail',
-                        controller: emailController,
-                        isEmail: true,
-                      ),
+                    FormContainer(
+                      labelText: 'E-mail',
+                      controller: emailController,
+                      isEmail: true,
                     ),
-                    const SizedBox(
-                        width: 12.0), // Add spacing between containers
-                    Expanded(
-                      child: FormContainer(
-                        labelText: 'Contact Number',
-                        controller: contactNumberController,
-                        isPhone: true,
-                      ),
+                    FormContainer(
+                      labelText: 'Contact Number',
+                      controller: contactNumberController,
+                      isPhone: true,
                     ),
-                  ],
-                ),
-                Row(
-                  children: [
-                    Expanded(
-                      child: FormContainer(
-                        labelText: 'Company Name',
-                        controller: companyNameController,
-                      ),
+                    FormContainer(
+                      labelText: 'Company Name',
+                      controller: companyNameController,
                     ),
-                    const SizedBox(
-                        width: 12.0), // Add spacing between containers
-                    Expanded(
-                      child: FormContainer(
-                        labelText: 'Office Number',
-                        controller: officeNumberController,
-                      ),
+                    FormContainer(
+                      labelText: 'Office Number',
+                      controller: officeNumberController,
                     ),
-                  ],
-                ),
-                Row(
-                  children: [
-                    Expanded(
-                      child: FormContainer(
-                        labelText: 'Premises Name',
-                        controller: premisesNameController,
-                      ),
+                    FormContainer(
+                      labelText: 'Premises Name',
+                      controller: premisesNameController,
                     ),
-                    const SizedBox(
-                        width: 12.0), // Add spacing between containers
-                    Expanded(
-                      child: FormContainer(
-                        labelText: 'Street Name',
-                        controller: streetNameController,
-                      ),
+                    FormContainer(
+                      labelText: 'Street Name',
+                      controller: streetNameController,
                     ),
-                  ],
-                ),
-                Row(
-                  children: [
-                    Expanded(
-                      child: FormContainer(
-                        labelText: 'Postal Code',
-                        controller: postalCodeController,
-                      ),
+                    FormContainer(
+                      labelText: 'Postal Code',
+                      controller: postalCodeController,
                     ),
-                    const SizedBox(
-                        width: 12.0), // Add spacing between containers
-                    Expanded(
-                      child: FormContainer(
-                        labelText: 'City Name',
-                        controller: cityNameController,
-                      ),
+                    FormContainer(
+                      labelText: 'City Name',
+                      controller: cityNameController,
                     ),
-                  ],
-                ),
-                Row(
-                  children: [
-                    Expanded(
-                      child: FormContainer(
-                        labelText: 'Province Name',
-                        controller: provinceNameController,
-                      ),
+                    FormContainer(
+                      labelText: 'Province Name',
+                      controller: provinceNameController,
                     ),
-                    const SizedBox(
-                        width: 12.0), // Add spacing between containers
-                    Expanded(
-                      child: FormContainer(
-                        labelText: 'Company VAT No',
-                        controller: companyVatNoController,
-                      ),
+                    FormContainer(
+                      labelText: 'Company VAT No',
+                      controller: companyVatNoController,
                     ),
                   ],
                 ),
