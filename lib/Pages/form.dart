@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mediant_solutions_form/Componants/button.dart';
 import 'package:mediant_solutions_form/Componants/dropdown_button.dart';
 import 'package:mediant_solutions_form/Componants/insert.dart';
 
@@ -40,61 +41,30 @@ class HomePage extends StatelessWidget {
                   child: Text('Event: Event name here\n',
                       style: TextStyle(fontSize: 14)),
                 ),
-                Wrap(
-                  spacing: 12.0,
-                  runSpacing: 12.0,
-                  children: [
-                    FormContainer(
-                      labelText: 'First Name',
-                      controller: nameController,
-                    ),
-                    FormContainer(
-                      labelText: 'Last Name',
-                      controller: lastNameController,
-                    ),
-                    FormContainer(
-                      labelText: 'E-mail',
-                      controller: emailController,
-                      isEmail: true,
-                    ),
-                    FormContainer(
-                      labelText: 'Contact Number',
-                      controller: contactNumberController,
-                      isPhone: true,
-                    ),
-                    FormContainer(
-                      labelText: 'Company Name',
-                      controller: companyNameController,
-                    ),
-                    FormContainer(
-                      labelText: 'Office Number',
-                      controller: officeNumberController,
-                    ),
-                    FormContainer(
-                      labelText: 'Premises Name',
-                      controller: premisesNameController,
-                    ),
-                    FormContainer(
-                      labelText: 'Street Name',
-                      controller: streetNameController,
-                    ),
-                    FormContainer(
-                      labelText: 'Postal Code',
-                      controller: postalCodeController,
-                    ),
-                    FormContainer(
-                      labelText: 'City Name',
-                      controller: cityNameController,
-                    ),
-                    FormContainer(
-                      labelText: 'Province Name',
-                      controller: provinceNameController,
-                    ),
-                    FormContainer(
-                      labelText: 'Company VAT No',
-                      controller: companyVatNoController,
-                    ),
-                  ],
+                LayoutBuilder(
+                  builder: (BuildContext context, BoxConstraints constraints) {
+                    return Wrap(
+                      spacing: 12.0,
+                      runSpacing: 12.0,
+                      children: [
+                        for (int i = 0; i < 12; i++)
+                          ConstrainedBox(
+                            constraints: BoxConstraints(
+                              minWidth: 80,
+                              maxWidth: constraints.maxWidth > 412
+                                  ? (constraints.maxWidth - 12) / 2
+                                  : constraints.maxWidth,
+                            ),
+                            child: FormContainer(
+                              labelText: _getFormFieldLabel(i),
+                              controller: _getFormFieldController(i),
+                              isEmail: i == 2,
+                              isPhone: i == 3,
+                            ),
+                          ),
+                      ],
+                    );
+                  },
                 ),
                 const SizedBox(height: 16.0),
                 Padding(
@@ -115,7 +85,9 @@ class HomePage extends StatelessWidget {
                 ),
                 const Padding(
                   padding: EdgeInsets.only(left: 12.0),
-                  child: Row(
+                  child: Wrap(
+                    spacing: 4.0, // Adjust spacing between words
+                    runSpacing: 4.0, // Adjust spacing between lines
                     children: [
                       Text(
                           'Want us to remember your details for future event registration? :'),
@@ -128,38 +100,36 @@ class HomePage extends StatelessWidget {
                     ],
                   ),
                 ),
-                const SizedBox(height: 20.0),
                 Row(
                   children: [
-                    Padding(
-                      padding: const EdgeInsets.only(left: 12.0),
-                      child: TextButton(
-                        onPressed: () {
-                          // Link to next page
-                        },
-                        style: TextButton.styleFrom(
-                          backgroundColor:
-                              const Color.fromARGB(255, 116, 219, 103),
-                          foregroundColor: Colors.white,
-                          minimumSize: const Size(200, 40),
+                    Expanded(
+                      child: Padding(
+                        padding: const EdgeInsets.all(20.0),
+                        child: Wrap(
+                          alignment: WrapAlignment.spaceBetween,
+                          spacing:
+                              10.0, // Add some horizontal spacing between buttons
+                          runSpacing:
+                              10.0, // Add some vertical spacing between rows
+                          children: [
+                            CustomButton(
+                              onPressed: () {
+                                if (_validateForm(context)) {
+                                  // Proceed to next page
+                                }
+                              },
+                              label: 'Continue',
+                            ),
+                            CustomButton(
+                              onPressed: () {
+                                // Browse other events link
+                              },
+                              label: 'Browse other Events',
+                              backgroundColor:
+                                  const Color.fromARGB(255, 107, 99, 255),
+                            ),
+                          ],
                         ),
-                        child: const Text('Continue'),
-                      ),
-                    ),
-                    const Spacer(),
-                    Padding(
-                      padding: const EdgeInsets.only(right: 12.0),
-                      child: TextButton(
-                        onPressed: () {
-                          // Browse other events link
-                        },
-                        style: TextButton.styleFrom(
-                          backgroundColor:
-                              const Color.fromARGB(255, 107, 99, 255),
-                          foregroundColor: Colors.white,
-                          minimumSize: const Size(300, 40),
-                        ),
-                        child: const Text('Browse other Events'),
                       ),
                     ),
                   ],
@@ -170,5 +140,71 @@ class HomePage extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  bool _validateForm(BuildContext context) {
+    String errorMessage = '';
+    if (nameController.text.isEmpty) {
+      errorMessage += 'First Name is required.\n';
+    }
+    if (lastNameController.text.isEmpty) {
+      errorMessage += 'Last Name is required.\n';
+    }
+    if (emailController.text.isEmpty) {
+      errorMessage += 'Email is required.\n';
+    } else if (!_isValidEmail(emailController.text)) {
+      errorMessage += 'Please enter a valid email address.\n';
+    }
+    // Add more validation checks for other fields
+
+    if (errorMessage.isNotEmpty) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text(errorMessage)),
+      );
+      return false;
+    }
+    return true;
+  }
+
+  bool _isValidEmail(String email) {
+    // Simple regex for email validation
+    return RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$').hasMatch(email);
+  }
+
+  // Add these new methods at the end of the HomePage class
+  String _getFormFieldLabel(int index) {
+    final labels = [
+      'First Name',
+      'Last Name',
+      'E-mail',
+      'Contact Number',
+      'Company Name',
+      'Office Number',
+      'Premises Name',
+      'Street Name',
+      'Postal Code',
+      'City Name',
+      'Province Name',
+      'Company VAT No'
+    ];
+    return labels[index];
+  }
+
+  TextEditingController _getFormFieldController(int index) {
+    final controllers = [
+      nameController,
+      lastNameController,
+      emailController,
+      contactNumberController,
+      companyNameController,
+      officeNumberController,
+      premisesNameController,
+      streetNameController,
+      postalCodeController,
+      cityNameController,
+      provinceNameController,
+      companyVatNoController
+    ];
+    return controllers[index];
   }
 }

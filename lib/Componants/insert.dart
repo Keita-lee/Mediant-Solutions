@@ -18,51 +18,78 @@ class FormContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return LayoutBuilder(
-      builder: (context, constraints) {
-        // Set the width of the container
-        double containerWidth = constraints.maxWidth > 200
-            ? 390
-            : constraints.maxWidth > 200
-                ? constraints.maxWidth
-                : 200;
-
-        return SizedBox(
-          width: containerWidth,
-          child: Padding(
-            padding: const EdgeInsets.all(12.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  labelText,
-                  style: const TextStyle(
-                    fontSize: 14.0,
-                  ),
-                ),
-                Container(
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(8.0),
-                    border: Border.all(color: Colors.black),
-                  ),
-                  child: TextField(
-                    controller: controller,
-                    keyboardType: isEmail
-                        ? TextInputType.emailAddress
-                        : isPhone
-                            ? TextInputType.phone
-                            : TextInputType.text,
-                    obscureText: isPassword,
-                    decoration: const InputDecoration(
-                      border: InputBorder.none,
-                      contentPadding: EdgeInsets.symmetric(horizontal: 10.0),
-                    ),
-                  ),
-                ),
-              ],
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            labelText,
+            style: const TextStyle(fontSize: 14.0),
+          ),
+          Container(
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(8.0),
+              border: Border.all(color: Colors.black),
+            ),
+            child: TextFormField(
+              controller: controller,
+              keyboardType: isEmail
+                  ? TextInputType.emailAddress
+                  : isPhone
+                      ? TextInputType.phone
+                      : TextInputType.text,
+              obscureText: isPassword,
+              decoration: const InputDecoration(
+                border: InputBorder.none,
+                contentPadding: EdgeInsets.symmetric(horizontal: 10.0),
+              ),
+              validator: isEmail
+                  ? (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Please enter an email address';
+                      }
+                      final emailRegex =
+                          RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$');
+                      if (!emailRegex.hasMatch(value)) {
+                        return 'Please enter a valid email address';
+                      }
+                      return null;
+                    }
+                  : null,
             ),
           ),
+        ],
+      ),
+    );
+  }
+}
+
+class FormContainerGrid extends StatelessWidget {
+  final List<FormContainer> formContainers;
+
+  const FormContainerGrid({Key? key, required this.formContainers})
+      : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        return GridView.builder(
+          shrinkWrap: true,
+          physics: NeverScrollableScrollPhysics(),
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 2,
+            childAspectRatio: (constraints.maxWidth / 2) /
+                100, // Adjust 100 to change the height of the items
+            crossAxisSpacing: 8,
+            mainAxisSpacing: 8,
+          ),
+          itemCount: formContainers.length,
+          itemBuilder: (context, index) {
+            return formContainers[index];
+          },
         );
       },
     );
