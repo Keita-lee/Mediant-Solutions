@@ -69,8 +69,7 @@ class FormContainer extends StatelessWidget {
 class FormContainerGrid extends StatelessWidget {
   final List<FormContainer> formContainers;
 
-  const FormContainerGrid({Key? key, required this.formContainers})
-      : super(key: key);
+  const FormContainerGrid({super.key, required this.formContainers});
 
   @override
   Widget build(BuildContext context) {
@@ -78,7 +77,7 @@ class FormContainerGrid extends StatelessWidget {
       builder: (context, constraints) {
         return GridView.builder(
           shrinkWrap: true,
-          physics: NeverScrollableScrollPhysics(),
+          physics: const NeverScrollableScrollPhysics(),
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2,
             childAspectRatio: (constraints.maxWidth / 2) /

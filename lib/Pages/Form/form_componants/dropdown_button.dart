@@ -5,10 +5,10 @@ class NumberDropdown extends StatefulWidget {
   final ValueChanged<int?>? onChanged; // Callback for when the value changes
 
   const NumberDropdown({
-    Key? key,
+    super.key,
     this.initialValue,
     this.onChanged,
-  }) : super(key: key);
+  });
 
   @override
   _NumberDropdownState createState() => _NumberDropdownState();

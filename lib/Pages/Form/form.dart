@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:mediant_solutions_form/Componants/button.dart';
-import 'package:mediant_solutions_form/Componants/dropdown_button.dart';
-import 'package:mediant_solutions_form/Componants/insert.dart';
+import 'package:mediant_solutions_form/Pages/Form/form_componants/button.dart';
+import 'package:mediant_solutions_form/Pages/Form/form_componants/dropdown_button.dart';
+import 'package:mediant_solutions_form/Pages/Form/form_componants/insert.dart';
 
-class HomePage extends StatelessWidget {
+class FormPage extends StatelessWidget {
   final TextEditingController nameController = TextEditingController();
   final TextEditingController lastNameController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
@@ -17,7 +17,7 @@ class HomePage extends StatelessWidget {
   final TextEditingController provinceNameController = TextEditingController();
   final TextEditingController companyVatNoController = TextEditingController();
 
-  HomePage({super.key});
+  FormPage({super.key});
 
   @override
   Widget build(BuildContext context) {
