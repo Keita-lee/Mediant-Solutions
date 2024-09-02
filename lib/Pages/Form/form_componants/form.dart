@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:mediant_solutions_form/Pages/Form/form_componants/button.dart';
+import 'package:mediant_solutions_form/CommonComponants/Buttons/green_button.dart';
+import 'package:mediant_solutions_form/Pages/CreateYourAccount/create_your_account.dart';
 import 'package:mediant_solutions_form/Pages/Form/form_componants/dropdown_button.dart';
-import 'package:mediant_solutions_form/Pages/Form/form_componants/insert.dart';
+import 'package:mediant_solutions_form/Pages/Form/form_componants/form_container.dart';
+import 'package:mediant_solutions_form/Themes/font_text.dart';
 
 class FormPage extends StatelessWidget {
   final TextEditingController nameController = TextEditingController();
@@ -23,88 +25,143 @@ class FormPage extends StatelessWidget {
   Widget build(BuildContext context) {
     var widthDevice = MediaQuery.of(context).size.width;
 
-    return SingleChildScrollView(
+    return Material(
       child: Center(
         child: Container(
-          width: widthDevice * 0.6,
+          width: widthDevice * 0.45,
           decoration: BoxDecoration(
             color: Colors.grey[300],
             borderRadius: BorderRadius.circular(16.0),
           ),
           child: Padding(
-            padding: const EdgeInsets.all(30.0),
+            padding: const EdgeInsets.only(
+                left: 30.0, right: 30.0, top: 20.0, bottom: 20.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const Padding(
-                  padding: EdgeInsets.only(left: 12.0),
+                  padding: EdgeInsets.only(left: 12.0, bottom: 8.0),
                   child: Text('Event: Event name here\n',
                       style: TextStyle(fontSize: 14)),
                 ),
-                LayoutBuilder(
-                  builder: (BuildContext context, BoxConstraints constraints) {
-                    return Wrap(
-                      spacing: 12.0,
-                      runSpacing: 12.0,
-                      children: [
-                        for (int i = 0; i < 12; i++)
-                          ConstrainedBox(
-                            constraints: BoxConstraints(
-                              minWidth: 80,
-                              maxWidth: constraints.maxWidth > 412
-                                  ? (constraints.maxWidth - 12) / 2
-                                  : constraints.maxWidth,
-                            ),
-                            child: FormContainer(
-                              labelText: _getFormFieldLabel(i),
-                              controller: _getFormFieldController(i),
-                              isEmail: i == 2,
-                              isPhone: i == 3,
-                            ),
-                          ),
-                      ],
-                    );
-                  },
+                const Padding(
+                  padding: EdgeInsets.only(left: 12.0, bottom: 16.0),
+                  child: Text(
+                    'Person Responsible for The Invoice:',
+                    style: TextStyle(fontSize: 12),
+                  ),
                 ),
-                const SizedBox(height: 16.0),
+                // First 4 FormContainers
                 Padding(
-                  padding: const EdgeInsets.only(bottom: 10.0, left: 12.0),
-                  child: Row(
-                    children: [
-                      const Text('Number of attendants'),
-                      const SizedBox(
-                          width: 20.0), // Spacing between text and dropdown
-                      NumberDropdown(
-                        initialValue: 1, // Default value
-                        onChanged: (newValue) {
-                          // Handle value change
-                        },
-                      ),
-                    ],
+                  padding: const EdgeInsets.symmetric(horizontal: 12.0),
+                  child: LayoutBuilder(
+                    builder:
+                        (BuildContext context, BoxConstraints constraints) {
+                      return Wrap(
+                        spacing: 12.0,
+                        runSpacing: 8.0,
+                        children: [
+                          for (int i = 0; i < 4; i++)
+                            ConstrainedBox(
+                              constraints: BoxConstraints(
+                                minWidth: 70,
+                                maxWidth: constraints.maxWidth > 402
+                                    ? (constraints.maxWidth - 12) / 2
+                                    : constraints.maxWidth,
+                              ),
+                              child: FormContainer(
+                                labelText: _getFormFieldLabel(i),
+                                controller: _getFormFieldController(i),
+                                isEmail: i == 2,
+                                isPhone: i == 3,
+                              ),
+                            ),
+                        ],
+                      );
+                    },
+                  ),
+                ),
+                const Padding(
+                  padding: EdgeInsets.only(left: 12.0, top: 16.0, bottom: 16.0),
+                  child: Text(
+                    'Billing Address:',
+                    style: TextStyle(fontSize: 12),
+                  ),
+                ),
+                // Remaining FormContainers
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 12.0),
+                  child: LayoutBuilder(
+                    builder:
+                        (BuildContext context, BoxConstraints constraints) {
+                      return Wrap(
+                        spacing: 12.0,
+                        runSpacing: 8.0,
+                        children: [
+                          for (int i = 4; i < 12; i++)
+                            ConstrainedBox(
+                              constraints: BoxConstraints(
+                                minWidth: 70,
+                                maxWidth: constraints.maxWidth > 402
+                                    ? (constraints.maxWidth - 12) / 2
+                                    : constraints.maxWidth,
+                              ),
+                              child: FormContainer(
+                                labelText: _getFormFieldLabel(i),
+                                controller: _getFormFieldController(i),
+                              ),
+                            ),
+                        ],
+                      );
+                    },
                   ),
                 ),
                 const Padding(
                   padding: EdgeInsets.only(left: 12.0),
+                  child: Row(
+                    children: [
+                      Text(
+                        'Number of Attendees',
+                        style: TextStyle(
+                          fontSize: 12,
+                        ),
+                      ),
+                      SizedBox(width: 15),
+                      NumberDropdown(initialValue: 1)
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(12.0),
                   child: Wrap(
                     spacing: 4.0, // Adjust spacing between words
                     runSpacing: 4.0, // Adjust spacing between lines
                     children: [
-                      Text(
-                          'Want us to remember your details for future event registration? :'),
-                      Text(
-                        'Create an account', //insert link
-                        style: TextStyle(
-                          decoration: TextDecoration.underline,
+                      const Text(
+                          'Want us to remember your details for future event registration? :',
+                          style: TextStyle(fontSize: 12)),
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const CreateYourAccount(),
+                            ),
+                          );
+                        },
+                        child: Text(
+                          'Create an account',
+                          style: FontText(context).bodySmallUnderline,
                         ),
-                      )
+                      ),
                     ],
                   ),
                 ),
-                Row(
-                  children: [
-                    Expanded(
-                      child: Padding(
-                        padding: const EdgeInsets.all(20.0),
+                Padding(
+                  padding: const EdgeInsets.all(12.0),
+                  child: Row(
+                    children: [
+                      Expanded(
                         child: Wrap(
                           alignment: WrapAlignment.spaceBetween,
                           spacing:
@@ -112,7 +169,7 @@ class FormPage extends StatelessWidget {
                           runSpacing:
                               10.0, // Add some vertical spacing between rows
                           children: [
-                            CustomButton(
+                            GreenButton(
                               onPressed: () {
                                 if (_validateForm(context)) {
                                   // Proceed to next page
@@ -120,7 +177,7 @@ class FormPage extends StatelessWidget {
                               },
                               label: 'Continue',
                             ),
-                            CustomButton(
+                            GreenButton(
                               onPressed: () {
                                 // Browse other events link
                               },
@@ -131,8 +188,8 @@ class FormPage extends StatelessWidget {
                           ],
                         ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ],
             ),
@@ -183,7 +240,7 @@ class FormPage extends StatelessWidget {
       'Premises Name',
       'Street Name',
       'Postal Code',
-      'City Name',
+      'City',
       'Province Name',
       'Company VAT No'
     ];

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-// import 'package:mediant_solutions_form/Pages/form.dart';
+// import 'package:mediant_solutions_form/Pages/CreateYourAccount/create_your_account.dart';
+
 import 'package:mediant_solutions_form/Pages/Events/events.dart';
 
 void main() {
@@ -11,9 +12,11 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      // home: Scaffold(body: FormPage()),
-      home: Scaffold(body: Events()),
+    return MaterialApp(
+      home: Scaffold(
+        body: const Events(),
+        // body: const CreateYourAccount(),
+      ),
     );
   }
 }

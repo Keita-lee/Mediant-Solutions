@@ -31,7 +31,10 @@ class _NumberDropdownState extends State<NumberDropdown> {
         int number = index + 1;
         return DropdownMenuItem<int>(
           value: number,
-          child: Text(number.toString()),
+          child: Text(
+            number.toString(),
+            style: const TextStyle(fontSize: 14),
+          ),
         );
       }),
       onChanged: (int? newValue) {

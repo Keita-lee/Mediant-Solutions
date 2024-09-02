@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:mediant_solutions_form/Themes/custom_colors.dart';
 
-class CustomButton extends StatelessWidget {
+class GreenButton extends StatelessWidget {
   final VoidCallback onPressed;
   final String label;
   final Color backgroundColor;
   final Color foregroundColor;
 
-  const CustomButton({
+  const GreenButton({
     super.key,
     required this.onPressed,
     required this.label,
-    this.backgroundColor = const Color.fromARGB(255, 116, 219, 103),
+    this.backgroundColor = CustomColors.green,
     this.foregroundColor = Colors.white,
   });
 
@@ -20,7 +21,7 @@ class CustomButton extends StatelessWidget {
       builder: (context, constraints) {
         return ConstrainedBox(
           constraints: BoxConstraints(
-            minWidth: 200,
+            // Removed minWidth constraint
             maxWidth: constraints.maxWidth,
           ),
           child: TextButton(
@@ -28,11 +29,16 @@ class CustomButton extends StatelessWidget {
             style: TextButton.styleFrom(
               backgroundColor: backgroundColor,
               foregroundColor: foregroundColor,
-              padding: const EdgeInsets.symmetric(horizontal: 20.0),
+              padding: const EdgeInsets.symmetric(
+                horizontal: 24.0, // Adjusted horizontal padding
+              ),
+              minimumSize: const Size(0, 30),
+              tapTargetSize:
+                  MaterialTapTargetSize.shrinkWrap, // Added this line
             ),
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 5.0),
-              child: Text(label),
+            child: Text(
+              label,
+              style: const TextStyle(fontSize: 10),
             ),
           ),
         );

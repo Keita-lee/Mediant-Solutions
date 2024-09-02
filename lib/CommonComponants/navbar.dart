@@ -13,7 +13,7 @@ class Navbar extends StatelessWidget {
       children: [
         SizedBox(
           width: widthDevice,
-          height: heightDevice * 0.4,
+          height: heightDevice * 0.42,
           child: Image.asset(
             'images/EventsBackground.png',
             fit: BoxFit.cover,
@@ -21,7 +21,7 @@ class Navbar extends StatelessWidget {
         ),
         Container(
           width: widthDevice,
-          height: heightDevice * 0.4,
+          height: heightDevice * 0.42,
           color: Colors.black.withOpacity(0.5),
         ),
         Positioned(
@@ -78,7 +78,7 @@ class Navbar extends StatelessWidget {
 class NavbarLink extends StatelessWidget {
   final String text;
 
-  const NavbarLink({Key? key, required this.text}) : super(key: key);
+  const NavbarLink({super.key, required this.text});
 
   @override
   Widget build(BuildContext context) {

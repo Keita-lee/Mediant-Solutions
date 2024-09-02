@@ -1,27 +1,56 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class FontText {
-  static const TextStyle blackBold30 = TextStyle(
-    color: Colors.black,
-    fontSize: 30,
-    fontWeight: FontWeight.bold,
-  );
+  BuildContext context;
+  FontText(this.context);
+  double get width => MediaQuery.of(context).size.width;
+  TextStyle get headingLarge => GoogleFonts.abel(
+        color: Colors.black,
+        fontSize: 25,
+        fontWeight: FontWeight.bold,
+      );
 
-  static const TextStyle black16 = TextStyle(
-    color: Colors.black,
-    fontSize: 16,
-    fontWeight: FontWeight.normal,
-  );
+  TextStyle get headingLargeWhite => GoogleFonts.abel(
+        color: Colors.white,
+        fontSize: 35,
+        fontWeight: FontWeight.normal,
+      );
 
-  static const TextStyle white16 = TextStyle(
-    color: Colors.white,
-    fontSize: 16,
-    fontWeight: FontWeight.normal,
-  );
+  TextStyle get bodyMediumBlack => GoogleFonts.abel(
+        color: Colors.black,
+        fontSize: width > 1280 ? 16 : 22,
+        fontWeight: FontWeight.bold,
+      );
+
+  TextStyle get bodySmallBlack => GoogleFonts.abel(
+        color: Colors.black,
+        fontSize: width < 1280 ? 10 : 20,
+        fontWeight: FontWeight.normal,
+      );
+
+  TextStyle get bodySmallUnderline => GoogleFonts.abel(
+        color: Colors.black,
+        fontSize: width < 1280 ? 10 : 20,
+        fontWeight: FontWeight.normal,
+        decoration: TextDecoration.underline,
+      );
+
+  TextStyle get bodySmallBlackBold => GoogleFonts.abel(
+        color: Colors.black,
+        fontSize: width < 1280 ? 10 : 20,
+        fontWeight: FontWeight.bold,
+      );
+
+  TextStyle get bodySmallWhite => GoogleFonts.abel(
+        color: Colors.white,
+        fontSize: width < 1280 ? 10 : 20,
+        fontWeight: FontWeight.normal,
+      );
 
   static TextStyle defaultStyle({
     Color color = Colors.black,
-    double fontSize = 16,
+    double fontSize = 10,
     FontWeight fontWeight = FontWeight.normal,
   }) {
     return TextStyle(

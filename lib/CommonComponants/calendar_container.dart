@@ -2,7 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:mediant_solutions_form/Themes/custom_colors.dart';
 
 class CalendarContainer extends StatelessWidget {
-  const CalendarContainer({super.key});
+  final String title;
+  final String description;
+  final String imagePath;
+
+  const CalendarContainer({
+    super.key,
+    required this.title,
+    required this.description,
+    required this.imagePath,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -13,8 +22,8 @@ class CalendarContainer extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Container(
-          width: deviceWidth * 0.3,
-          height: deviceHeight * 0.24,
+          width: deviceWidth * 0.36,
+          height: deviceHeight * 0.26,
           decoration: BoxDecoration(
             color: CustomColors.green,
             borderRadius: BorderRadius.circular(15),
@@ -24,23 +33,22 @@ class CalendarContainer extends StatelessWidget {
               Expanded(
                 flex: 3,
                 child: Padding(
-                  padding: const EdgeInsets.all(16.0),
+                  padding: const EdgeInsets.all(12.0),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        'All of our Upcoming events:',
+                        title,
                         style:
                             Theme.of(context).textTheme.titleMedium?.copyWith(
-                                  overflow: TextOverflow.ellipsis,
                                   color: CustomColors.white,
                                 ),
                       ),
                       Text(
-                        'Welcome to our upcoming events! We\'re thrilled to have you join us as we explore a diverse range of exciting opportunities, designed to inspire, educate, and connect. Whether you\'re looking to learn something new, meet like-minded individuals, or simply enjoy a unique experience, our events promise to deliver something special for everyone. We can\'t wait to see you there!',
+                        description,
                         style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                              fontSize: 9,
+                              fontSize: 11,
                               color: CustomColors.white,
                             ),
                       ),
@@ -55,7 +63,7 @@ class CalendarContainer extends StatelessWidget {
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Image.asset(
-                      'images/calendar.png', // Replace with your image path
+                      imagePath,
                       fit: BoxFit.cover,
                     ),
                   ),

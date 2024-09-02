@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:mediant_solutions_form/CommonComponants/Buttons/arrow_button.dart';
 import 'package:mediant_solutions_form/Themes/custom_colors.dart';
+import 'package:mediant_solutions_form/Themes/font_text.dart';
 
 class EventContainers extends StatelessWidget {
   const EventContainers({
@@ -71,8 +73,8 @@ class EventContainers extends StatelessWidget {
                         // Event description
                         Text(
                           eventDescription,
-                          style: Theme.of(context).textTheme.bodySmall,
-                          maxLines: 2,
+                          style: FontText(context).bodySmallBlack,
+                          maxLines: 4,
                           overflow: TextOverflow.ellipsis,
                         ),
                       ],
@@ -81,45 +83,14 @@ class EventContainers extends StatelessWidget {
                   const Spacer(),
                   Padding(
                     padding:
-                        const EdgeInsets.only(left: 10, right: 10, bottom: 10),
+                        const EdgeInsets.only(left: 8, right: 5, bottom: 5),
                     child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        TextButton(
+                        ArrowButton(
+                          buttonText: 'Read More',
                           onPressed: onButtonPressed,
-                          style: TextButton.styleFrom(
-                            foregroundColor: Colors.black,
-                            padding: EdgeInsets.zero,
-                          ),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              Text(buttonText),
-                              const SizedBox(width: 2),
-                              const SizedBox(
-                                width: 20,
-                                child: Stack(
-                                  alignment: Alignment.centerLeft,
-                                  children: [
-                                    Icon(
-                                      Icons.arrow_forward_ios_sharp,
-                                      size: 12,
-                                      color: CustomColors.black,
-                                    ),
-                                    Positioned(
-                                      left: 6,
-                                      child: Icon(
-                                        Icons.arrow_forward_ios_sharp,
-                                        size: 12,
-                                        color: CustomColors.black,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ],
-                          ),
                         ),
+                        const Spacer(),
                         Container(
                           padding: const EdgeInsets.symmetric(
                               horizontal: 8, vertical: 4),
@@ -132,13 +103,7 @@ class EventContainers extends StatelessWidget {
                             children: [
                               Text(
                                 'Exclusive Offers',
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .bodySmall
-                                    ?.copyWith(
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.bold,
-                                    ),
+                                style: FontText(context).bodySmallWhite,
                               ),
                               const SizedBox(width: 4),
                               const Icon(Icons.check,
