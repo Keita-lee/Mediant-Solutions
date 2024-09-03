@@ -31,10 +31,10 @@ class _FormContainerState extends State<FormContainer> {
         children: [
           Text(
             widget.labelText,
-            style: const TextStyle(fontSize: 12.0), // Increased font size
+            style: const TextStyle(fontSize: 12.0),
           ),
           Container(
-            height: 30, // Added fixed height for the input container
+            height: 30, // Keeping the original height
             decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.circular(8.0),
@@ -50,7 +50,10 @@ class _FormContainerState extends State<FormContainer> {
               obscureText: widget.isPassword ? _obscureText : false,
               decoration: InputDecoration(
                 border: InputBorder.none,
-                contentPadding: const EdgeInsets.symmetric(horizontal: 4.0),
+                contentPadding: const EdgeInsets.only(
+                    left: 8.0, bottom: 2.0), // Adjusted padding
+                isDense:
+                    true, // Added to reduce the overall height of the input
                 suffixIcon: widget.isPassword
                     ? IconButton(
                         icon: Icon(
@@ -77,6 +80,8 @@ class _FormContainerState extends State<FormContainer> {
               ),
               style:
                   const TextStyle(fontSize: 12.0), // Added text style for input
+              textAlignVertical:
+                  TextAlignVertical.bottom, // Added to lower the text
 
               validator: widget.isEmail
                   ? (value) {

@@ -3,6 +3,7 @@ import 'package:mediant_solutions_form/CommonComponants/Buttons/green_button.dar
 import 'package:mediant_solutions_form/Pages/CreateYourAccount/create_your_account.dart';
 import 'package:mediant_solutions_form/Pages/Form/form_componants/dropdown_button.dart';
 import 'package:mediant_solutions_form/Pages/Form/form_componants/form_container.dart';
+import 'package:mediant_solutions_form/Pages/Payments/payments.dart';
 import 'package:mediant_solutions_form/Themes/font_text.dart';
 
 class FormPage extends StatelessWidget {
@@ -24,6 +25,24 @@ class FormPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var widthDevice = MediaQuery.of(context).size.width;
+    Future openCreateYourAccountDialog() => showDialog(
+        context: context,
+        builder: (context) {
+          return Dialog(
+            backgroundColor: Colors.transparent,
+            insetPadding: EdgeInsets.all(0),
+            child: CreateYourAccount(),
+          );
+        });
+    Future openPaymentsDialog() => showDialog(
+        context: context,
+        builder: (context) {
+          return Dialog(
+            backgroundColor: Colors.transparent,
+            insetPadding: EdgeInsets.all(0),
+            child: Payments(),
+          );
+        });
 
     return Material(
       child: Center(
@@ -142,12 +161,7 @@ class FormPage extends StatelessWidget {
                           style: TextStyle(fontSize: 12)),
                       GestureDetector(
                         onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => const CreateYourAccount(),
-                            ),
-                          );
+                          openCreateYourAccountDialog();
                         },
                         child: Text(
                           'Create an account',
@@ -169,17 +183,17 @@ class FormPage extends StatelessWidget {
                           runSpacing:
                               10.0, // Add some vertical spacing between rows
                           children: [
-                            GreenButton(
+                            CustomButton(
                               onPressed: () {
                                 if (_validateForm(context)) {
-                                  // Proceed to next page
+                                  openPaymentsDialog();
                                 }
                               },
                               label: 'Continue',
                             ),
-                            GreenButton(
+                            CustomButton(
                               onPressed: () {
-                                // Browse other events link
+                                // Browse other events functionality
                               },
                               label: 'Browse other Events',
                               backgroundColor:

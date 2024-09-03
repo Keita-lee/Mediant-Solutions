@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:mediant_solutions_form/Themes/custom_colors.dart';
 
-class GreenButton extends StatelessWidget {
+class CustomButton extends StatelessWidget {
   final VoidCallback onPressed;
   final String label;
   final Color backgroundColor;
   final Color foregroundColor;
 
-  const GreenButton({
+  const CustomButton({
     super.key,
     required this.onPressed,
     required this.label,

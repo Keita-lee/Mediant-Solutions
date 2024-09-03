@@ -4,7 +4,6 @@ import 'package:mediant_solutions_form/Pages/CreateYourAccount/create_your_accou
 import 'package:mediant_solutions_form/Pages/Form/form_main_page.dart';
 import 'package:mediant_solutions_form/Themes/custom_colors.dart';
 import 'package:mediant_solutions_form/Themes/font_text.dart';
-import 'package:flutter/gestures.dart';
 
 class EventPopUp extends StatelessWidget {
   const EventPopUp({
@@ -26,6 +25,15 @@ class EventPopUp extends StatelessWidget {
   Widget build(BuildContext context) {
     final widthDevice = MediaQuery.of(context).size.width;
     final heightDevice = MediaQuery.of(context).size.height;
+    Future openCreateYourAccountDialog() => showDialog(
+        context: context,
+        builder: (context) {
+          return Dialog(
+            backgroundColor: Colors.transparent,
+            insetPadding: EdgeInsets.all(0),
+            child: CreateYourAccount(),
+          );
+        });
 
     return Material(
       type: MaterialType.transparency,
@@ -33,7 +41,7 @@ class EventPopUp extends StatelessWidget {
         children: [
           SizedBox(
             width: widthDevice * 0.46,
-            height: heightDevice * 0.62,
+            height: heightDevice * 0.64,
             child: Column(
               children: [
                 Stack(
@@ -225,32 +233,25 @@ class EventPopUp extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.symmetric(
                             horizontal: 10.0, vertical: 16),
-                        child: RichText(
-                          text: TextSpan(
-                            children: [
-                              TextSpan(
-                                text: 'Don\'t have an account?  ',
-                                style: FontText(context).bodySmallBlack,
-                              ),
-                              TextSpan(
-                                text: 'Create an account',
+                        child: Row(
+                          children: [
+                            Text(
+                              'Don\'t have an account? ',
+                              style: FontText(context).bodySmallBlack,
+                            ),
+                            GestureDetector(
+                              onTap: () {
+                                openCreateYourAccountDialog();
+                              },
+                              child: Text(
+                                'Create an account',
                                 style: FontText(context).bodySmallUnderline,
-                                recognizer: TapGestureRecognizer()
-                                  ..onTap = () {
-                                    Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) =>
-                                            const CreateYourAccount(),
-                                      ),
-                                    );
-                                  },
                               ),
-                            ],
-                          ),
+                            ),
+                          ],
                         ),
                       ),
-                      GreenButton(
+                      CustomButton(
                         onPressed: () {
                           Navigator.push(
                             context,

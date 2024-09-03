@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+// import 'package:mediant_solutions_form/Pages/Events/event_full_popup.dart';
+// import 'package:mediant_solutions_form/Pages/CreateYourAccount/account_created_successfully.dart';
 // import 'package:mediant_solutions_form/Pages/CreateYourAccount/create_your_account.dart';
-
+// import 'package:mediant_solutions_form/Pages/Payments/payments.dart';
 import 'package:mediant_solutions_form/Pages/Events/events.dart';
 
 void main() {
@@ -16,6 +18,9 @@ class MyApp extends StatelessWidget {
       home: Scaffold(
         body: const Events(),
         // body: const CreateYourAccount(),
+        // body: const Payments(),
+        // body: const AccountCreatedSuccessfully(),
+        // body: const EventFull(),
       ),
     );
   }

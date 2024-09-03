@@ -19,13 +19,13 @@ class FontText {
 
   TextStyle get bodyMediumBlack => GoogleFonts.abel(
         color: Colors.black,
-        fontSize: width > 1280 ? 16 : 22,
+        fontSize: width > 1280 ? 12 : 16,
         fontWeight: FontWeight.bold,
       );
 
   TextStyle get bodySmallBlack => GoogleFonts.abel(
         color: Colors.black,
-        fontSize: width < 1280 ? 10 : 20,
+        fontSize: width < 1280 ? 12 : 20,
         fontWeight: FontWeight.normal,
       );
 
@@ -38,13 +38,13 @@ class FontText {
 
   TextStyle get bodySmallBlackBold => GoogleFonts.abel(
         color: Colors.black,
-        fontSize: width < 1280 ? 10 : 20,
+        fontSize: width < 1280 ? 12 : 20,
         fontWeight: FontWeight.bold,
       );
 
   TextStyle get bodySmallWhite => GoogleFonts.abel(
         color: Colors.white,
-        fontSize: width < 1280 ? 10 : 20,
+        fontSize: width < 1280 ? 12 : 20,
         fontWeight: FontWeight.normal,
       );
 
