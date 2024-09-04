@@ -15,8 +15,8 @@ class EventFull extends StatelessWidget {
       insetPadding: const EdgeInsets.all(0),
       backgroundColor: Colors.transparent,
       child: Container(
-        width: widthDevice * 0.46,
-        height: heightDevice * 0.64,
+        width: widthDevice < 600 ? 500 : widthDevice * 0.46,
+        height: widthDevice < 600 ? 600 : heightDevice * 0.70,
         decoration: BoxDecoration(
           color: CustomColors.navyBlue,
           borderRadius: BorderRadius.circular(16),

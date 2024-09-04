@@ -7,13 +7,13 @@ class FontText {
   double get width => MediaQuery.of(context).size.width;
   TextStyle get headingLarge => GoogleFonts.abel(
         color: Colors.black,
-        fontSize: width < 600 ? 24 : width / 25,
+        fontSize: width < 600 ? 24 : width / 40,
         fontWeight: FontWeight.bold,
       );
 
   TextStyle get headingLargeWhite => GoogleFonts.abel(
         color: Colors.white,
-        fontSize: width < 600 ? 30 : width / 25,
+        fontSize: width < 600 ? 30 : width / 40,
         fontWeight: FontWeight.normal,
       );
 

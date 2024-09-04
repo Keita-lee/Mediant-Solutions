@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mediant_solutions_form/CommonComponants/Buttons/browse_other_events.dart';
 import 'package:mediant_solutions_form/CommonComponants/Buttons/green_button.dart';
 import 'package:mediant_solutions_form/Pages/CreateYourAccount/create_your_account.dart';
 import 'package:mediant_solutions_form/Pages/Form/form_componants/dropdown_button.dart';
@@ -193,14 +194,7 @@ class FormPage extends StatelessWidget {
                               },
                               label: 'Continue',
                             ),
-                            CustomButton(
-                              onPressed: () {
-                                // Browse other events functionality
-                              },
-                              label: 'Browse other Events',
-                              backgroundColor:
-                                  const Color.fromARGB(255, 107, 99, 255),
-                            ),
+                            const PurpleButton(),
                           ],
                         ),
                       ),

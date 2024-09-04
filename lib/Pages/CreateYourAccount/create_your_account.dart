@@ -16,8 +16,8 @@ class CreateYourAccount extends StatelessWidget {
       backgroundColor: Colors.transparent,
       child: Center(
         child: Container(
-          width: widthDevice * 0.48,
-          height: heightDevice * 0.64,
+          width: widthDevice < 600 ? 500 : widthDevice * 0.46,
+          height: widthDevice < 600 ? 600 : heightDevice * 0.70,
           decoration: BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.circular(15),
@@ -76,29 +76,30 @@ class CreateYourAccount extends StatelessWidget {
                     ),
                   ),
                   child: Padding(
-                    padding: const EdgeInsets.all(20.0),
+                    padding: const EdgeInsets.symmetric(horizontal: 20.0),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        Align(
-                          alignment: Alignment.topRight,
-                          child: IconButton(
-                            icon: const Icon(Icons.close,
-                                color: Colors.white, size: 18), // Reduced size
-                            onPressed: () {
-                              Navigator.of(context).pop();
-                            },
-                            padding: EdgeInsets.zero, // Remove default padding
-                            constraints:
-                                const BoxConstraints(), // Remove minimum size constraints
+                        Padding(
+                          padding: const EdgeInsets.only(top: 10.0),
+                          child: Align(
+                            alignment: Alignment.topRight,
+                            child: IconButton(
+                              icon: const Icon(Icons.close,
+                                  color: Colors.white, size: 18),
+                              onPressed: () {
+                                Navigator.of(context).pop();
+                              },
+                              padding: EdgeInsets.zero,
+                              constraints: const BoxConstraints(),
+                            ),
                           ),
                         ),
-                        const SizedBox(height: 20),
                         Text(
                           'WELCOME',
                           style: FontText(context).headingLargeWhite,
                         ),
-                        const SizedBox(height: 8),
+                        const SizedBox(height: 30),
                         Text(
                           'Thank you for creating an account with us! We\'re thrilled to have you as part of our community. Your account is your gateway to exclusive content, personalized updates, and a seamless experience. We\'re excited to support you and make sure you get the most out of our platform!',
                           style: FontText(context).bodySmallWhite,

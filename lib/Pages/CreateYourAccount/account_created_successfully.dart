@@ -28,13 +28,12 @@ class AccountCreatedSuccessfully extends StatelessWidget {
             children: [
               Text(
                 'Account Created Successfully',
-                style:
-                    FontText(context).headingLargeWhite.copyWith(fontSize: 26),
+                style: FontText(context).headingLargeWhite,
               ),
               SizedBox(height: heightDevice * 0.02),
               Text(
                 'Thank you for creating an account with us! We\'re thrilled to have you as part of our community. Your account is your gateway to exclusive content, personalized updates, and a seamless experience. We\'re excited to support you and make sure you get the most out of our platform!',
-                style: FontText(context).bodySmallWhite.copyWith(fontSize: 16),
+                style: FontText(context).bodySmallWhite,
                 textAlign: TextAlign.center,
               ),
               const Spacer(),
