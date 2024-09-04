@@ -5,6 +5,7 @@ import 'package:mediant_solutions_form/Pages/Form/form_componants/dropdown_butto
 import 'package:mediant_solutions_form/Pages/Form/form_componants/form_container.dart';
 import 'package:mediant_solutions_form/Pages/Payments/payments.dart';
 import 'package:mediant_solutions_form/Themes/font_text.dart';
+import 'dart:math';
 
 class FormPage extends StatelessWidget {
   final TextEditingController nameController = TextEditingController();
@@ -47,7 +48,7 @@ class FormPage extends StatelessWidget {
     return Material(
       child: Center(
         child: Container(
-          width: widthDevice * 0.5,
+          width: max(widthDevice * 0.5, 300),
           decoration: BoxDecoration(
             color: Colors.grey[300],
             borderRadius: BorderRadius.circular(16.0),
@@ -137,7 +138,9 @@ class FormPage extends StatelessWidget {
                 ),
                 const Padding(
                   padding: EdgeInsets.only(left: 12.0),
-                  child: Row(
+                  child: Wrap(
+                    spacing: 15, // Equivalent to SizedBox(width: 15)
+                    crossAxisAlignment: WrapCrossAlignment.center,
                     children: [
                       Text(
                         'Number of Attendees',
@@ -145,7 +148,6 @@ class FormPage extends StatelessWidget {
                           fontSize: 12,
                         ),
                       ),
-                      SizedBox(width: 15),
                       NumberDropdown(initialValue: 1)
                     ],
                   ),

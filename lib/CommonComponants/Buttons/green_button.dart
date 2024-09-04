@@ -40,6 +40,8 @@ class CustomButton extends StatelessWidget {
             child: Text(
               label,
               style: FontText(context).bodySmallWhite,
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
             ),
           ),
         );

@@ -41,35 +41,70 @@ class Navbar extends StatelessWidget {
                     height: heightDevice * 0.15,
                     fit: BoxFit.contain,
                   ),
-                  const Row(
-                    children: [
-                      NavbarLink(text: 'Home'),
-                      NavbarLink(text: 'Payroll'),
-                      NavbarLink(text: 'Consulting and Training'),
-                      NavbarLink(text: "FAQ's"),
-                      NavbarLink(text: 'Contact'),
-                    ],
-                  ),
+                  if (widthDevice >= 600)
+                    const Row(
+                      children: [
+                        NavbarLink(text: 'Home'),
+                        NavbarLink(text: 'Payroll'),
+                        NavbarLink(text: 'Consulting and Training'),
+                        NavbarLink(text: "FAQ's"),
+                        NavbarLink(text: 'Contact'),
+                      ],
+                    )
+                  else
+                    const NavbarDropdown(),
                 ],
               ),
-              const Padding(
-                padding: EdgeInsets.only(left: 400),
+              Padding(
+                padding: EdgeInsets.only(left: widthDevice * 0.3),
                 child: Text(
                   'Events',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 50,
-                    fontWeight: FontWeight.bold,
-                  ),
+                  style: FontText(context).headingLargeWhite,
                 ),
               ),
             ],
           ),
         ),
-        const Positioned(
+        Positioned(
           bottom: 0,
-          right: 140,
-          child: EmailUsContainer(),
+          right: widthDevice * 0.1, // 10% of screen width
+          child: const EmailUsContainer(),
+        ),
+      ],
+    );
+  }
+}
+
+class NavbarDropdown extends StatelessWidget {
+  const NavbarDropdown({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return PopupMenuButton<String>(
+      icon: const Icon(Icons.menu, color: Colors.white),
+      onSelected: (String result) {
+        // Handle navigation based on selection
+      },
+      itemBuilder: (BuildContext context) => <PopupMenuEntry<String>>[
+        const PopupMenuItem<String>(
+          value: 'Home',
+          child: Text('Home'),
+        ),
+        const PopupMenuItem<String>(
+          value: 'Payroll',
+          child: Text('Payroll'),
+        ),
+        const PopupMenuItem<String>(
+          value: 'Consulting and Training',
+          child: Text('Consulting and Training'),
+        ),
+        const PopupMenuItem<String>(
+          value: "FAQ's",
+          child: Text("FAQ's"),
+        ),
+        const PopupMenuItem<String>(
+          value: 'Contact',
+          child: Text('Contact'),
         ),
       ],
     );

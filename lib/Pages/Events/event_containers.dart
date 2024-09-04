@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:mediant_solutions_form/CommonComponants/Buttons/arrow_button.dart';
 import 'package:mediant_solutions_form/Themes/custom_colors.dart';
 import 'package:mediant_solutions_form/Themes/font_text.dart';
+import 'dart:math' show max;
 
 class EventContainers extends StatelessWidget {
   const EventContainers({
@@ -30,8 +31,8 @@ class EventContainers extends StatelessWidget {
         child: Stack(
           children: [
             Container(
-              width: widthDevice * 0.23,
-              height: heightDevice * 0.45,
+              width: max(widthDevice * 0.23, 250),
+              height: max(heightDevice * 0.35, 250),
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(15),
@@ -54,7 +55,8 @@ class EventContainers extends StatelessWidget {
                     child: Image.network(
                       imageUrl,
                       width: double.infinity,
-                      height: heightDevice * 0.24,
+                      height: max(heightDevice * 0.25, 150) *
+                          0.6, // Adjusted height
                       fit: BoxFit.cover,
                     ),
                   ),

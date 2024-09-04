@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:mediant_solutions_form/Themes/custom_colors.dart';
 import 'package:mediant_solutions_form/Themes/font_text.dart';
@@ -22,14 +24,12 @@ class CalendarContainer extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Container(
-          width: deviceWidth * 0.36,
-          // height: deviceHeight * 0.24, // Remove this line
+          width: max(deviceWidth * 0.4, 250),
           decoration: BoxDecoration(
             color: CustomColors.green,
             borderRadius: BorderRadius.circular(15),
           ),
           child: IntrinsicHeight(
-            // Add this widget
             child: Row(
               children: [
                 Expanded(
@@ -45,11 +45,18 @@ class CalendarContainer extends StatelessWidget {
                           title,
                           style: FontText(context).bodyMediumBlack.copyWith(
                                 color: CustomColors.white,
+                                fontSize:
+                                    MediaQuery.of(context).size.width < 600
+                                        ? 10
+                                        : null,
                               ),
                         ),
-                        Text(
-                          description,
-                          style: FontText(context).bodySmallWhite,
+                        Visibility(
+                          visible: MediaQuery.of(context).size.width >= 600,
+                          child: Text(
+                            description,
+                            style: FontText(context).smallWhiteCalendar,
+                          ),
                         ),
                       ],
                     ),

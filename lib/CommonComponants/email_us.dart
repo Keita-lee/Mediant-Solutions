@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mediant_solutions_form/Themes/custom_colors.dart';
+import 'package:mediant_solutions_form/Themes/font_text.dart';
 
 class EmailUsContainer extends StatelessWidget {
   const EmailUsContainer({super.key});
@@ -9,10 +10,13 @@ class EmailUsContainer extends StatelessWidget {
     final widthDevice = MediaQuery.of(context).size.width;
     final heightDevice = MediaQuery.of(context).size.height;
 
+    final containerWidth = widthDevice < 600 ? 160.0 : widthDevice * 0.15;
+    final containerHeight = widthDevice < 600 ? 60.0 : heightDevice * 0.12;
+
     return Container(
-      width: widthDevice * 0.15,
-      height: heightDevice * 0.12,
-      padding: const EdgeInsets.all(16),
+      width: containerWidth,
+      height: containerHeight,
+      padding: const EdgeInsets.only(left: 14),
       decoration: BoxDecoration(
         color: CustomColors.navyBlue,
         borderRadius: BorderRadius.circular(2),
@@ -23,17 +27,14 @@ class EmailUsContainer extends StatelessWidget {
         children: [
           Text(
             'Email us',
-            style: Theme.of(context).textTheme.titleMedium?.copyWith(
+            style: FontText(context).bodyMediumBlack.copyWith(
                   color: Colors.white,
-                  fontWeight: FontWeight.bold,
                 ),
           ),
           const SizedBox(height: 8),
           Text(
             'hello@mediant.co.za',
-            style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                  color: Colors.white,
-                ),
+            style: FontText(context).bodySmallWhite,
           ),
         ],
       ),
