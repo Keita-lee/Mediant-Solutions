@@ -14,7 +14,7 @@ class Payments extends StatelessWidget {
     var widthDevice = MediaQuery.of(context).size.width;
     var heightDevice = MediaQuery.of(context).size.height;
     return Dialog(
-      insetPadding: EdgeInsets.all(0),
+      insetPadding: const EdgeInsets.all(0),
       backgroundColor: Colors.transparent,
       child: Center(
         child: Container(
@@ -22,6 +22,7 @@ class Payments extends StatelessWidget {
           height: heightDevice * 0.64,
           decoration: BoxDecoration(
             color: Colors.white,
+            borderRadius: BorderRadius.circular(15),
           ),
           child: Row(
             children: [
@@ -105,7 +106,7 @@ class Payments extends StatelessWidget {
                       ),
                       const Spacer(),
                       Text(
-                        'Original Price: \R',
+                        'Original Price: R',
                         style: FontText(context).bodySmallBlackBold,
                       ),
                       const SizedBox(height: 10),
@@ -115,7 +116,7 @@ class Payments extends StatelessWidget {
                       ),
                       const SizedBox(height: 10),
                       Text(
-                        'Total Price: \R',
+                        'Total Price: R',
                         style: FontText(context).bodySmallBlackBold,
                       ),
                       const SizedBox(height: 10),
@@ -134,7 +135,13 @@ class Payments extends StatelessWidget {
               Expanded(
                 flex: 1,
                 child: Container(
-                  color: CustomColors.navyBlue,
+                  decoration: const BoxDecoration(
+                    color: CustomColors.navyBlue,
+                    borderRadius: BorderRadius.only(
+                      topRight: Radius.circular(15),
+                      bottomRight: Radius.circular(15),
+                    ),
+                  ),
                   child: Padding(
                     padding: const EdgeInsets.all(20.0),
                     child: Column(

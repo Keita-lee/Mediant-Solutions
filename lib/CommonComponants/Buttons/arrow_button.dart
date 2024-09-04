@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mediant_solutions_form/Themes/custom_colors.dart';
+import 'package:mediant_solutions_form/Themes/font_text.dart';
 
 class ArrowButton extends StatelessWidget {
   final String buttonText;
@@ -25,7 +26,7 @@ class ArrowButton extends StatelessWidget {
           child: Row(
             mainAxisSize: MainAxisSize.min,
             children: [
-              Text(buttonText),
+              Text(buttonText, style: FontText(context).bodySmallBlackBold),
               const SizedBox(width: 2),
               const SizedBox(
                 width: 20,

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:mediant_solutions_form/CommonComponants/calendar_container.dart';
-import 'package:mediant_solutions_form/CommonComponants/footer.dart';
+import 'package:mediant_solutions_form/CommonComponants/Footer.dart';
 import 'package:mediant_solutions_form/Pages/Events/event_popup.dart';
-import 'package:mediant_solutions_form/Pages/Events/events_componants/event_containers.dart';
+import 'package:mediant_solutions_form/Pages/Events/event_containers.dart';
 import 'package:mediant_solutions_form/CommonComponants/navbar.dart';
 // Import EventPopUp
 
@@ -82,7 +82,7 @@ class Events extends StatelessWidget {
               ],
             ),
             const SizedBox(height: 20),
-            const footer(),
+            const Footer(),
           ],
         ),
       ),

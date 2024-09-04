@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mediant_solutions_form/CommonComponants/calendar_container.dart';
-import 'package:mediant_solutions_form/CommonComponants/footer.dart';
+import 'package:mediant_solutions_form/CommonComponants/Footer.dart';
 import 'package:mediant_solutions_form/CommonComponants/navbar.dart';
 
 import 'package:mediant_solutions_form/Pages/Form/form_componants/form.dart';
@@ -24,7 +24,7 @@ class FormMainPage extends StatelessWidget {
             padding: const EdgeInsets.all(16.0),
             child: FormPage(),
           ),
-          const footer(),
+          const Footer(),
         ],
       ),
     );

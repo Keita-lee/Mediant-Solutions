@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mediant_solutions_form/CommonComponants/email_us.dart';
+import 'package:mediant_solutions_form/Themes/font_text.dart';
 
 class Navbar extends StatelessWidget {
   const Navbar({super.key});
@@ -86,7 +87,7 @@ class NavbarLink extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 10),
       child: Text(
         text,
-        style: TextStyle(color: Colors.white, fontSize: 16),
+        style: FontText(context).bodyMediumBlack.copyWith(color: Colors.white),
       ),
     );
   }

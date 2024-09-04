@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mediant_solutions_form/Themes/custom_colors.dart';
+import 'package:mediant_solutions_form/Themes/font_text.dart';
 
 class CustomButton extends StatelessWidget {
   final VoidCallback onPressed;
@@ -38,7 +39,7 @@ class CustomButton extends StatelessWidget {
             ),
             child: Text(
               label,
-              style: const TextStyle(fontSize: 10),
+              style: FontText(context).bodySmallWhite,
             ),
           ),
         );

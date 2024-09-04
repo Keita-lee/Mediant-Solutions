@@ -7,44 +7,44 @@ class FontText {
   double get width => MediaQuery.of(context).size.width;
   TextStyle get headingLarge => GoogleFonts.abel(
         color: Colors.black,
-        fontSize: 25,
+        fontSize: width / 55,
         fontWeight: FontWeight.bold,
       );
 
   TextStyle get headingLargeWhite => GoogleFonts.abel(
         color: Colors.white,
-        fontSize: 35,
+        fontSize: width / 55,
         fontWeight: FontWeight.normal,
       );
 
   TextStyle get bodyMediumBlack => GoogleFonts.abel(
         color: Colors.black,
-        fontSize: width > 1280 ? 12 : 16,
+        fontSize: width / 80,
         fontWeight: FontWeight.bold,
       );
 
   TextStyle get bodySmallBlack => GoogleFonts.abel(
         color: Colors.black,
-        fontSize: width < 1280 ? 12 : 20,
+        fontSize: width / 100,
         fontWeight: FontWeight.normal,
       );
 
   TextStyle get bodySmallUnderline => GoogleFonts.abel(
         color: Colors.black,
-        fontSize: width < 1280 ? 10 : 20,
+        fontSize: width / 100,
         fontWeight: FontWeight.normal,
         decoration: TextDecoration.underline,
       );
 
   TextStyle get bodySmallBlackBold => GoogleFonts.abel(
         color: Colors.black,
-        fontSize: width < 1280 ? 12 : 20,
+        fontSize: width / 100,
         fontWeight: FontWeight.bold,
       );
 
   TextStyle get bodySmallWhite => GoogleFonts.abel(
         color: Colors.white,
-        fontSize: width < 1280 ? 12 : 20,
+        fontSize: width / 100,
         fontWeight: FontWeight.normal,
       );
 

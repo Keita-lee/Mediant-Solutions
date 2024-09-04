@@ -66,7 +66,7 @@ class EventContainers extends StatelessWidget {
                         // Event name
                         Text(
                           eventName,
-                          style: Theme.of(context).textTheme.titleMedium,
+                          style: FontText(context).bodyMediumBlack,
                           overflow: TextOverflow.ellipsis,
                         ),
                         const SizedBox(height: 4),

@@ -28,7 +28,7 @@ class FormPage extends StatelessWidget {
     Future openCreateYourAccountDialog() => showDialog(
         context: context,
         builder: (context) {
-          return Dialog(
+          return const Dialog(
             backgroundColor: Colors.transparent,
             insetPadding: EdgeInsets.all(0),
             child: CreateYourAccount(),
@@ -37,7 +37,7 @@ class FormPage extends StatelessWidget {
     Future openPaymentsDialog() => showDialog(
         context: context,
         builder: (context) {
-          return Dialog(
+          return const Dialog(
             backgroundColor: Colors.transparent,
             insetPadding: EdgeInsets.all(0),
             child: Payments(),
@@ -47,7 +47,7 @@ class FormPage extends StatelessWidget {
     return Material(
       child: Center(
         child: Container(
-          width: widthDevice * 0.45,
+          width: widthDevice * 0.5,
           decoration: BoxDecoration(
             color: Colors.grey[300],
             borderRadius: BorderRadius.circular(16.0),
@@ -58,16 +58,16 @@ class FormPage extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Padding(
-                  padding: EdgeInsets.only(left: 12.0, bottom: 8.0),
+                Padding(
+                  padding: const EdgeInsets.only(left: 12.0),
                   child: Text('Event: Event name here\n',
-                      style: TextStyle(fontSize: 14)),
+                      style: FontText(context).bodyMediumBlack),
                 ),
-                const Padding(
-                  padding: EdgeInsets.only(left: 12.0, bottom: 16.0),
+                Padding(
+                  padding: const EdgeInsets.only(left: 12.0, bottom: 16.0),
                   child: Text(
                     'Person Responsible for The Invoice:',
-                    style: TextStyle(fontSize: 12),
+                    style: FontText(context).bodySmallBlack,
                   ),
                 ),
                 // First 4 FormContainers
@@ -156,9 +156,9 @@ class FormPage extends StatelessWidget {
                     spacing: 4.0, // Adjust spacing between words
                     runSpacing: 4.0, // Adjust spacing between lines
                     children: [
-                      const Text(
+                      Text(
                           'Want us to remember your details for future event registration? :',
-                          style: TextStyle(fontSize: 12)),
+                          style: FontText(context).bodySmallBlack),
                       GestureDetector(
                         onTap: () {
                           openCreateYourAccountDialog();

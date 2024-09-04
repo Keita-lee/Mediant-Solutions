@@ -12,7 +12,7 @@ class EventFull extends StatelessWidget {
     var widthDevice = MediaQuery.of(context).size.width;
     var heightDevice = MediaQuery.of(context).size.height;
     return Dialog(
-      insetPadding: EdgeInsets.all(0),
+      insetPadding: const EdgeInsets.all(0),
       backgroundColor: Colors.transparent,
       child: Container(
         width: widthDevice * 0.46,

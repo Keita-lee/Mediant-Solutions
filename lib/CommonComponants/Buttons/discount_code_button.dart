@@ -5,11 +5,10 @@ import 'package:mediant_solutions_form/Themes/font_text.dart';
 class DiscountCodeButton extends StatefulWidget {
   final VoidCallback onPressed;
 
-  const DiscountCodeButton({Key? key, required this.onPressed})
-      : super(key: key);
+  const DiscountCodeButton({super.key, required this.onPressed});
 
   @override
-  _DiscountCodeButtonState createState() => _DiscountCodeButtonState();
+  State<DiscountCodeButton> createState() => _DiscountCodeButtonState();
 }
 
 class _DiscountCodeButtonState extends State<DiscountCodeButton> {

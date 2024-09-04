@@ -14,9 +14,9 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       home: Scaffold(
-        body: const Events(),
+        body: Events(),
         // body: const CreateYourAccount(),
         // body: const Payments(),
         // body: const AccountCreatedSuccessfully(),

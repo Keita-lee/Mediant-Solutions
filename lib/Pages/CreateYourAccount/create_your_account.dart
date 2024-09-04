@@ -12,7 +12,7 @@ class CreateYourAccount extends StatelessWidget {
     var widthDevice = MediaQuery.of(context).size.width;
     var heightDevice = MediaQuery.of(context).size.height;
     return Dialog(
-      insetPadding: EdgeInsets.all(0),
+      insetPadding: const EdgeInsets.all(0),
       backgroundColor: Colors.transparent,
       child: Center(
         child: Container(
@@ -20,6 +20,7 @@ class CreateYourAccount extends StatelessWidget {
           height: heightDevice * 0.64,
           decoration: BoxDecoration(
             color: Colors.white,
+            borderRadius: BorderRadius.circular(15),
           ),
           child: Row(
             children: [
@@ -67,7 +68,13 @@ class CreateYourAccount extends StatelessWidget {
               Expanded(
                 flex: 1,
                 child: Container(
-                  color: CustomColors.navyBlue,
+                  decoration: const BoxDecoration(
+                    color: CustomColors.navyBlue,
+                    borderRadius: BorderRadius.only(
+                      topRight: Radius.circular(15),
+                      bottomRight: Radius.circular(15),
+                    ),
+                  ),
                   child: Padding(
                     padding: const EdgeInsets.all(20.0),
                     child: Column(
@@ -83,7 +90,7 @@ class CreateYourAccount extends StatelessWidget {
                             },
                             padding: EdgeInsets.zero, // Remove default padding
                             constraints:
-                                BoxConstraints(), // Remove minimum size constraints
+                                const BoxConstraints(), // Remove minimum size constraints
                           ),
                         ),
                         const SizedBox(height: 20),

@@ -28,7 +28,7 @@ class EventPopUp extends StatelessWidget {
     Future openCreateYourAccountDialog() => showDialog(
         context: context,
         builder: (context) {
-          return Dialog(
+          return const Dialog(
             backgroundColor: Colors.transparent,
             insetPadding: EdgeInsets.all(0),
             child: CreateYourAccount(),
@@ -232,7 +232,7 @@ class EventPopUp extends StatelessWidget {
                       ),
                       Padding(
                         padding: const EdgeInsets.symmetric(
-                            horizontal: 10.0, vertical: 16),
+                            horizontal: 10.0, vertical: 10.0),
                         child: Row(
                           children: [
                             Text(
@@ -251,21 +251,25 @@ class EventPopUp extends StatelessWidget {
                           ],
                         ),
                       ),
-                      CustomButton(
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) =>
-                                    Material(child: FormMainPage())),
-                          );
-                        },
-                        label: 'Register for this Event',
-                      ),
                     ],
                   ),
                 ),
               ],
+            ),
+          ),
+          Positioned(
+            bottom: 10,
+            left: 10,
+            child: CustomButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) =>
+                          const Material(child: FormMainPage())),
+                );
+              },
+              label: 'Register for this Event',
             ),
           ),
           Positioned(
