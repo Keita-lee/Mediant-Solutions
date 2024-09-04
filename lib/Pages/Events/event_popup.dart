@@ -41,7 +41,7 @@ class EventPopUp extends StatelessWidget {
         children: [
           SizedBox(
             width: widthDevice < 600 ? 500 : widthDevice * 0.46,
-            height: widthDevice < 600 ? 600 : heightDevice * 0.67,
+            height: widthDevice < 600 ? 600 : heightDevice * 0.70,
             child: Column(
               children: [
                 Stack(
@@ -248,7 +248,7 @@ class EventPopUp extends StatelessWidget {
 
   Widget _buildExclusiveOffers(BuildContext context, double widthDevice) {
     return Container(
-      width: 180,
+      width: widthDevice < 1000 ? 180 : widthDevice * 0.15,
       decoration: const BoxDecoration(
         color: CustomColors.green,
         borderRadius: BorderRadius.only(
@@ -256,7 +256,7 @@ class EventPopUp extends StatelessWidget {
           bottomLeft: Radius.circular(15),
         ),
       ),
-      padding: const EdgeInsets.all(8),
+      padding: const EdgeInsets.all(8.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -283,7 +283,7 @@ class EventPopUp extends StatelessWidget {
                   ),
                 ],
               ),
-              const SizedBox(width: 8),
+              const SizedBox(width: 8.0),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [

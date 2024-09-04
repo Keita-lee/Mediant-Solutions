@@ -25,32 +25,32 @@ class FontText {
 
   TextStyle get bodySmallBlack => GoogleFonts.abel(
         color: Colors.black,
-        fontSize: width < 600 ? 12 : width / 80,
+        fontSize: width < 600 ? 12 : width / 100,
         fontWeight: FontWeight.normal,
       );
 
   TextStyle get bodySmallUnderline => GoogleFonts.abel(
         color: Colors.black,
-        fontSize: width < 600 ? 12 : width / 80,
+        fontSize: width < 600 ? 12 : width / 100,
         fontWeight: FontWeight.normal,
         decoration: TextDecoration.underline,
       );
 
   TextStyle get bodySmallBlackBold => GoogleFonts.abel(
         color: Colors.black,
-        fontSize: width < 600 ? 12 : width / 80,
+        fontSize: width < 600 ? 12 : width / 100,
         fontWeight: FontWeight.bold,
       );
 
   TextStyle get bodySmallWhite => GoogleFonts.abel(
         color: Colors.white,
-        fontSize: width < 600 ? 12 : width / 80,
+        fontSize: width < 600 ? 12 : width / 100,
         fontWeight: FontWeight.normal,
       );
 
   TextStyle get smallWhiteCalendar => GoogleFonts.abel(
         color: Colors.white,
-        fontSize: width < 600 ? 12 : width / 100,
+        fontSize: width < 600 ? 10 : width / 100,
         fontWeight: FontWeight.normal,
       );
 

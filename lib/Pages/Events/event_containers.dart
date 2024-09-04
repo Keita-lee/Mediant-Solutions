@@ -31,8 +31,10 @@ class EventContainers extends StatelessWidget {
         child: Stack(
           children: [
             Container(
-              width: max(widthDevice * 0.23, 250),
-              height: max(heightDevice * 0.35, 250),
+              width: max(widthDevice * 0.25, 250),
+              height: widthDevice < 600
+                  ? heightDevice * 0.4
+                  : max(heightDevice * 0.55, 250),
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(15),
@@ -55,8 +57,9 @@ class EventContainers extends StatelessWidget {
                     child: Image.network(
                       imageUrl,
                       width: double.infinity,
-                      height: max(heightDevice * 0.25, 150) *
-                          0.6, // Adjusted height
+                      height: widthDevice < 600
+                          ? heightDevice * 0.2
+                          : max(heightDevice * 0.4, 150) * 0.6,
                       fit: BoxFit.cover,
                     ),
                   ),

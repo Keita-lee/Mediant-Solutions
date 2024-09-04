@@ -22,7 +22,7 @@ class CalendarContainer extends StatelessWidget {
 
     return Material(
       child: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: EdgeInsets.all(deviceWidth * 0.04),
         child: Container(
           width: max(deviceWidth * 0.4, 250),
           decoration: BoxDecoration(
@@ -35,8 +35,7 @@ class CalendarContainer extends StatelessWidget {
                 Expanded(
                   flex: 3,
                   child: Padding(
-                    padding:
-                        EdgeInsets.symmetric(horizontal: deviceWidth * 0.02),
+                    padding: EdgeInsets.all(deviceWidth * 0.01),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.center,
