@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:mediant_solutions_form/CommonComponants/Buttons/browse_other_events.dart';
 import 'package:mediant_solutions_form/CommonComponants/Buttons/green_button.dart';
 import 'package:mediant_solutions_form/Pages/CreateYourAccount/create_your_account.dart';
+import 'package:mediant_solutions_form/Pages/CreateYourAccount/login.dart';
 import 'package:mediant_solutions_form/Pages/Form/form_componants/dropdown_button.dart';
 import 'package:mediant_solutions_form/Pages/Form/form_componants/form_container.dart';
 import 'package:mediant_solutions_form/Pages/Payments/payments.dart';
@@ -34,6 +35,16 @@ class FormPage extends StatelessWidget {
             backgroundColor: Colors.transparent,
             insetPadding: EdgeInsets.all(0),
             child: CreateYourAccount(),
+          );
+        });
+
+    Future openLoginDialog() => showDialog(
+        context: context,
+        builder: (context) {
+          return const Dialog(
+            backgroundColor: Colors.transparent,
+            insetPadding: EdgeInsets.all(0),
+            child: Login(),
           );
         });
     Future openPaymentsDialog() => showDialog(
@@ -150,6 +161,26 @@ class FormPage extends StatelessWidget {
                         ),
                       ),
                       NumberDropdown(initialValue: 1)
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(12.0),
+                  child: Wrap(
+                    spacing: 4.0, // Adjust spacing between words
+                    runSpacing: 4.0, // Adjust spacing between lines
+                    children: [
+                      Text('Already have an account? :',
+                          style: FontText(context).bodySmallBlack),
+                      GestureDetector(
+                        onTap: () {
+                          openLoginDialog();
+                        },
+                        child: Text(
+                          'Login',
+                          style: FontText(context).bodySmallUnderline,
+                        ),
+                      ),
                     ],
                   ),
                 ),
