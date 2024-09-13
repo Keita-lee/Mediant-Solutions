@@ -58,181 +58,180 @@ class FormPage extends StatelessWidget {
         });
 
     return Material(
-      child: Center(
-        child: Container(
-          width: max(widthDevice * 0.5, 300),
-          decoration: BoxDecoration(
-            color: Colors.grey[300],
-            borderRadius: BorderRadius.circular(16.0),
-          ),
-          child: Padding(
-            padding: const EdgeInsets.only(
-                left: 30.0, right: 30.0, top: 20.0, bottom: 20.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(left: 12.0),
-                  child: Text('Event: Event name here\n',
-                      style: FontText(context).bodyMediumBlack),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 12.0, bottom: 16.0),
-                  child: Text(
-                    'Person Responsible for The Invoice:',
-                    style: FontText(context).bodySmallBlack,
+      child: SingleChildScrollView(
+        child: Center(
+          child: Container(
+            width: max(widthDevice * 0.5, 300),
+            decoration: BoxDecoration(
+              color: Colors.grey[300],
+              borderRadius: BorderRadius.circular(16.0),
+            ),
+            child: Padding(
+              padding: const EdgeInsets.only(
+                  left: 30.0, right: 30.0, top: 20.0, bottom: 20.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(left: 12.0),
+                    child: Text('Event: Event name here\n',
+                        style: FontText(context).bodyMediumBlack),
                   ),
-                ),
-                // First 4 FormContainers
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 12.0),
-                  child: LayoutBuilder(
-                    builder:
-                        (BuildContext context, BoxConstraints constraints) {
-                      return Wrap(
-                        spacing: 12.0,
-                        runSpacing: 8.0,
-                        children: [
-                          for (int i = 0; i < 4; i++)
-                            ConstrainedBox(
-                              constraints: BoxConstraints(
-                                minWidth: 70,
-                                maxWidth: constraints.maxWidth > 402
-                                    ? (constraints.maxWidth - 12) / 2
-                                    : constraints.maxWidth,
-                              ),
-                              child: FormContainer(
-                                labelText: _getFormFieldLabel(i),
-                                controller: _getFormFieldController(i),
-                                isEmail: i == 2,
-                                isPhone: i == 3,
-                              ),
-                            ),
-                        ],
-                      );
-                    },
+                  Padding(
+                    padding: const EdgeInsets.only(left: 12.0, bottom: 16.0),
+                    child: Text(
+                      'Person Responsible for The Invoice:',
+                      style: FontText(context)
+                          .bodySmallBlackBold
+                          .copyWith(fontSize: 18),
+                    ),
                   ),
-                ),
-                const Padding(
-                  padding: EdgeInsets.only(left: 12.0, top: 16.0, bottom: 16.0),
-                  child: Text(
-                    'Billing Address:',
-                    style: TextStyle(fontSize: 12),
-                  ),
-                ),
-                // Remaining FormContainers
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 12.0),
-                  child: LayoutBuilder(
-                    builder:
-                        (BuildContext context, BoxConstraints constraints) {
-                      return Wrap(
-                        spacing: 12.0,
-                        runSpacing: 8.0,
-                        children: [
-                          for (int i = 4; i < 12; i++)
-                            ConstrainedBox(
-                              constraints: BoxConstraints(
-                                minWidth: 70,
-                                maxWidth: constraints.maxWidth > 402
-                                    ? (constraints.maxWidth - 12) / 2
-                                    : constraints.maxWidth,
-                              ),
-                              child: FormContainer(
-                                labelText: _getFormFieldLabel(i),
-                                controller: _getFormFieldController(i),
-                              ),
-                            ),
-                        ],
-                      );
-                    },
-                  ),
-                ),
-                const Padding(
-                  padding: EdgeInsets.only(left: 12.0),
-                  child: Wrap(
-                    spacing: 15, // Equivalent to SizedBox(width: 15)
-                    crossAxisAlignment: WrapCrossAlignment.center,
-                    children: [
-                      Text(
-                        'Number of Attendees',
-                        style: TextStyle(
-                          fontSize: 12,
-                        ),
-                      ),
-                      NumberDropdown(initialValue: 1)
-                    ],
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(12.0),
-                  child: Wrap(
-                    spacing: 4.0, // Adjust spacing between words
-                    runSpacing: 4.0, // Adjust spacing between lines
-                    children: [
-                      Text('Already have an account? :',
-                          style: FontText(context).bodySmallBlack),
-                      GestureDetector(
-                        onTap: () {
-                          openLoginDialog();
-                        },
-                        child: Text(
-                          'Login',
-                          style: FontText(context).bodySmallUnderline,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(12.0),
-                  child: Wrap(
-                    spacing: 4.0, // Adjust spacing between words
-                    runSpacing: 4.0, // Adjust spacing between lines
-                    children: [
-                      Text(
-                          'Want us to remember your details for future event registration? :',
-                          style: FontText(context).bodySmallBlack),
-                      GestureDetector(
-                        onTap: () {
-                          openCreateYourAccountDialog();
-                        },
-                        child: Text(
-                          'Create an account',
-                          style: FontText(context).bodySmallUnderline,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(12.0),
-                  child: Row(
-                    children: [
-                      Expanded(
-                        child: Wrap(
-                          alignment: WrapAlignment.spaceBetween,
-                          spacing:
-                              10.0, // Add some horizontal spacing between buttons
-                          runSpacing:
-                              10.0, // Add some vertical spacing between rows
+                  // First 4 FormContainers
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 12.0),
+                    child: LayoutBuilder(
+                      builder:
+                          (BuildContext context, BoxConstraints constraints) {
+                        return Wrap(
+                          spacing: 12.0,
+                          runSpacing: 8.0,
                           children: [
-                            CustomButton(
-                              onPressed: () {
-                                if (_validateForm(context)) {
-                                  openPaymentsDialog();
-                                }
-                              },
-                              label: 'Continue',
-                            ),
-                            const PurpleButton(),
+                            for (int i = 0; i < 4; i++)
+                              ConstrainedBox(
+                                constraints: BoxConstraints(
+                                  minWidth: 70,
+                                  maxWidth: constraints.maxWidth > 402
+                                      ? (constraints.maxWidth - 12) / 2
+                                      : constraints.maxWidth,
+                                ),
+                                child: FormContainer(
+                                  labelText: _getFormFieldLabel(i),
+                                  controller: _getFormFieldController(i),
+                                  isEmail: i == 2,
+                                  isPhone: i == 3,
+                                ),
+                              ),
                           ],
-                        ),
-                      ),
-                    ],
+                        );
+                      },
+                    ),
                   ),
-                ),
-              ],
+                  Padding(
+                    padding: const EdgeInsets.only(
+                        left: 12.0, top: 16.0, bottom: 16.0),
+                    child: Text(
+                      'Billing Address:',
+                      style: FontText(context)
+                          .bodySmallBlackBold
+                          .copyWith(fontSize: 18),
+                    ),
+                  ),
+                  // Remaining FormContainers
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 12.0),
+                    child: LayoutBuilder(
+                      builder:
+                          (BuildContext context, BoxConstraints constraints) {
+                        return Wrap(
+                          spacing: 12.0,
+                          runSpacing: 8.0,
+                          children: [
+                            for (int i = 4; i < 12; i++)
+                              ConstrainedBox(
+                                constraints: BoxConstraints(
+                                  minWidth: 70,
+                                  maxWidth: constraints.maxWidth > 402
+                                      ? (constraints.maxWidth - 12) / 2
+                                      : constraints.maxWidth,
+                                ),
+                                child: FormContainer(
+                                  labelText: _getFormFieldLabel(i),
+                                  controller: _getFormFieldController(i),
+                                ),
+                              ),
+                          ],
+                        );
+                      },
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 12.0),
+                    child: Wrap(
+                      spacing: 15, // Equivalent to SizedBox(width: 15)
+                      crossAxisAlignment: WrapCrossAlignment.center,
+                      children: [NumberDropdown(initialValue: 0)],
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(12.0),
+                    child: Wrap(
+                      spacing: 4.0, // Adjust spacing between words
+                      runSpacing: 4.0, // Adjust spacing between lines
+                      children: [
+                        Text('Already have an account? :',
+                            style: FontText(context).bodySmallBlack),
+                        GestureDetector(
+                          onTap: () {
+                            openLoginDialog();
+                          },
+                          child: Text(
+                            'Login',
+                            style: FontText(context).bodySmallUnderline,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(12.0),
+                    child: Wrap(
+                      spacing: 4.0, // Adjust spacing between words
+                      runSpacing: 4.0, // Adjust spacing between lines
+                      children: [
+                        Text(
+                            'Want us to remember your details for future event registration? :',
+                            style: FontText(context).bodySmallBlack),
+                        GestureDetector(
+                          onTap: () {
+                            openCreateYourAccountDialog();
+                          },
+                          child: Text(
+                            'Create an account',
+                            style: FontText(context).bodySmallUnderline,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(12.0),
+                    child: Row(
+                      children: [
+                        Expanded(
+                          child: Wrap(
+                            alignment: WrapAlignment.spaceBetween,
+                            spacing:
+                                10.0, // Add some horizontal spacing between buttons
+                            runSpacing:
+                                10.0, // Add some vertical spacing between rows
+                            children: [
+                              CustomButton(
+                                onPressed: () {
+                                  if (_validateForm(context)) {
+                                    openPaymentsDialog();
+                                  }
+                                },
+                                label: 'Continue',
+                              ),
+                              const PurpleButton(),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
         ),

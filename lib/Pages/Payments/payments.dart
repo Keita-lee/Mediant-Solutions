@@ -48,7 +48,7 @@ class Payments extends StatelessWidget {
                         style: FontText(context).bodyMediumBlack,
                       ),
                       Text(
-                        'Number of Attendees: ${const NumberDropdown()}',
+                        'Number of Attendees: ${NumberDropdown()}',
                         style: FontText(context).bodySmallBlackBold,
                       ),
                       const SizedBox(height: 10),
